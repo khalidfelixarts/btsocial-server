@@ -11,9 +11,9 @@ import { createClient } from 'redis';
 import { createAdapter } from '@socket.io/redis-adapter';
 import Logger from 'bunyan';
 import 'express-async-errors';
+import { CustomError, IErrorResponse } from './shared/globals/helpers/error-handler';
 import { config } from './config';
 import applicationRoutes from './routes';
-import { CustomError, IErrorResponse } from './shared/globals/helpers/error-handler';
 
 const SERVER_PORT = 5000;
 const log: Logger = config.createLogger('server');
@@ -103,4 +103,6 @@ function startHttpServer(httpServer: http.Server): void {
   });
 }
 
-function socketIOConnections(io: Server): void {}
+function socketIOConnections(io: Server): void {
+  log.info('socketIOConnections');
+}

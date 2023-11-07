@@ -15,6 +15,7 @@ function initialize(): void {
 
 function loadConfig(): void {
   config.validateConfig();
+  config.cloudinaryConfig();
 }
 
 initialize();
