@@ -11,7 +11,7 @@ import { upload } from '../../../shared/globals/helpers/cloudinary-upload';
 import HTTP_STATUS from 'http-status-codes';
 import { IUserDocument } from '../../../features/user/interfaces/user.interface';
 import { UserCache } from '../../../shared/services/redis/user.cache';
-import { config } from 'src/config';
+import { config } from '../../../config';
 
 const userCache: UserCache = new UserCache();
 
@@ -42,7 +42,7 @@ export class SignUp {
 
     //ADD TO REDIS CACHE
     const userDataForCache: IUserDocument = SignUp.prototype.userData(authData, userObjectId);
-    userDataForCache.profilePicture = `https://res/cloudinary.com/${config.CLOUD_NAME}/image/upload/v${result.version}/${userObjectId}`;
+    userDataForCache.profilePicture = `https://res.cloudinary.com/${config.CLOUD_NAME}/image/upload/v${result.version}/${userObjectId}`;
     await userCache.saveUserToCache(`${userObjectId}`, uId, userDataForCache);
 
     res.status(HTTP_STATUS.CREATED).json({ message: 'User created successfully', authData });
