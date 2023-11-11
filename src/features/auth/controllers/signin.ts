@@ -8,13 +8,14 @@ import { BadRequestError } from '../../../shared/globals/helpers/error-handler';
 import { loginSchema } from '../schemes/signin';
 import { IAuthDocument } from '../interfaces/auth.interface';
 import { userService } from 'src/shared/services/db/user.service';
-import { IResetPasswordParams, IUserDocument } from 'src/features/user/interfaces/user.interface';
+import { IUserDocument } from 'src/features/user/interfaces/user.interface';
 
 //////////// EMAIL SENT TEST //////////////
-import { emailQueue } from 'src/shared/services/queues/email.queue';
-import moment from 'moment';
-import publicIP from 'ip';
-import { resetPasswordTemplate } from 'src/shared/services/emails/templates/reset-password/reset-password-template';
+// import { IResetPasswordParams } from 'src/features/user/interfaces/user.interface';
+// import { emailQueue } from 'src/shared/services/queues/email.queue';
+// import moment from 'moment';
+// import publicIP from 'ip';
+// import { resetPasswordTemplate } from 'src/shared/services/emails/templates/reset-password/reset-password-template';
 
 export class SignIn {
   @joiValidation(loginSchema)
