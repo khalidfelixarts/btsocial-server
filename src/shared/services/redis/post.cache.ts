@@ -271,4 +271,23 @@ export class PostCache extends BaseCache {
       throw new ServerError('Server error. Try again.');
     }
   }
+
+  public async deletePostFromCache(key: string, currentUserId: string): Promise<void> {
+    try {
+      if (!this.client.isOpen) {
+        await this.client.connect();
+      }
+      const postCount: string[] = await this.client.HMGET(`users:${currentUserId}`, 'postsCount');
+      const multi: ReturnType<typeof this.client.multi> = this.client.multi();
+      multi.ZREM('post', `${key}`);
+      multi.DEL(`posts:${key}`);
+      multi.DEL(`comments:${key}`);
+      multi.DEL(`reactions:${key}`);
+      const count: number = parseInt(postCount[0], 10) - 1;
+      await multi.exec();
+    } catch (error) {
+      log.error(error);
+      throw new ServerError('Server error. Try again.');
+    }
+  }
 }
