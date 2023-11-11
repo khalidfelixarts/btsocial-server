@@ -26,6 +26,7 @@ export class Helpers {
     try {
       JSON.parse(prop);
     } catch (error) {
+      console.log('Error in Helpers');
       return prop;
     }
   }
