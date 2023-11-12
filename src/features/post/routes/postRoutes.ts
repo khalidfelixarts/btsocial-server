@@ -1,5 +1,5 @@
 import express, { Router } from 'express';
-import { authMiddleware } from 'src/shared/globals/helpers/auth-middleware';
+import { authMiddleware } from '../../../shared/globals/helpers/auth-middleware';
 import { Create } from '../controller/create-post';
 import { Get } from '../controller/get-posts';
 import { Delete } from '../controller/delete-post';

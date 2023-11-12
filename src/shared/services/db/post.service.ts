@@ -1,8 +1,8 @@
 import { Query, UpdateQuery } from 'mongoose';
-import { IGetPostsQuery, IPostDocument, IQueryComplete, IQueryDeleted } from 'src/features/post/interfaces/post.interface';
-import { PostModel } from 'src/features/post/models/post.schema';
-import { IUserDocument } from 'src/features/user/interfaces/user.interface';
-import { UserModel } from 'src/features/user/models/user.schema';
+import { IGetPostsQuery, IPostDocument, IQueryComplete, IQueryDeleted } from '../../../features/post/interfaces/post.interface';
+import { PostModel } from '../../../features/post/models/post.schema';
+import { IUserDocument } from '../../../features/user/interfaces/user.interface';
+import { UserModel } from '../../../features/user/models/user.schema';
 
 class PostService {
   public async addPostToDB(userId: string, createdPost: IPostDocument): Promise<void> {

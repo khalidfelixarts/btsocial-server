@@ -1,6 +1,7 @@
 // import { IReactions } from '../../../features/reactions/interfaces/reaction.interface';
 import { ObjectId } from 'mongodb';
 import mongoose, { Document } from 'mongoose';
+// import { IReactions } from '../../reactions/interfaces/reaction.interface';
 
 export interface IReactions {
   like: number;

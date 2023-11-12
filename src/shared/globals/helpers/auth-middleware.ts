@@ -1,8 +1,8 @@
 import { Request, Response, NextFunction } from 'express';
 import JWT from 'jsonwebtoken';
-import { config } from 'src/config';
+import { config } from '../../../config';
 import { NotAuthorizedError } from './error-handler';
-import { AuthPayload } from 'src/features/auth/interfaces/auth.interface';
+import { AuthPayload } from '../../../features/auth/interfaces/auth.interface';
 
 export class AuthMiddleware {
   public verifyUser(req: Request, res: Response, next: NextFunction): void {
