@@ -14,6 +14,7 @@ import 'express-async-errors';
 import { CustomError, IErrorResponse } from './shared/globals/helpers/error-handler';
 import { config } from './config';
 import applicationRoutes from './routes';
+import { SocketIOPostHandler } from './shared/sockets/post';
 
 const SERVER_PORT = 5000;
 const log: Logger = config.createLogger('server');
@@ -104,5 +105,6 @@ function startHttpServer(httpServer: http.Server): void {
 }
 
 function socketIOConnections(io: Server): void {
-  log.info('socketIOConnections');
+  const postSocketHandler: SocketIOPostHandler = new SocketIOPostHandler(io);
+  postSocketHandler.listen();
 }
