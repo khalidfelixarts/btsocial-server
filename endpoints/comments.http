@@ -1,0 +1,34 @@
+@baseUrl = http://localhost:5000
+
+@urlPath = api/v1
+
+
+
+###
+POST {{baseUrl}}/{{urlPath}}/post/comment
+Content-Type: application/json
+Accept: application/json
+withCredentials: true
+
+{
+  "userTo": "654f8624782e00a1ce0c7b77",
+  "postId": "6550a9d3b1769abfaccb20b7",
+  "comment": "This is my 2nd comment",
+  "profilePicture": "https://res.cloudinary.com/de0llaul4/image/upload/v1699461245/654bb87899cb99161d8df3e9"
+}
+
+
+###
+GET {{baseUrl}}/{{urlPath}}/post/commentsnames/6550a9d3b1769abfaccb20b7
+Content-Type: application/json
+Accept: application/json
+withCredentials: true
+
+
+
+
+###
+GET {{baseUrl}}/{{urlPath}}/post/single/comment/6550a9d3b1769abfaccb20b7/6550cf171aa2dbcd7752996b
+Content-Type: application/json
+Accept: application/json
+withCredentials: true

@@ -7,9 +7,10 @@ import { config } from '../../../config';
 import { IAuthJob } from '../../../features/auth/interfaces/auth.interface';
 import { IEmailJob } from '../../../features/user/interfaces/user.interface';
 import { IPostJobData } from '../../../features/post/interfaces/post.interface';
-import { IReactionJob } from 'src/features/reactions/interfaces/reaction.interface';
+import { IReactionJob } from '../../../features/reactions/interfaces/reaction.interface';
+import { ICommentJob } from '../../../features/comments/interfaces/comment.interface';
 
-type IBaseJobData = IAuthJob | IEmailJob | IPostJobData | IReactionJob;
+type IBaseJobData = IAuthJob | IEmailJob | IPostJobData | IReactionJob | ICommentJob;
 
 let bullAdapters: BullAdapter[] = [];
 
