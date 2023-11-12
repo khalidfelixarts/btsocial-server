@@ -15,6 +15,8 @@ import { CustomError, IErrorResponse } from './shared/globals/helpers/error-hand
 import { config } from './config';
 import applicationRoutes from './routes';
 import { SocketIOPostHandler } from './shared/sockets/post';
+import { SocketIOFollowerHandler } from './shared/sockets/follower';
+import { SocketIOUserHandler } from './shared/sockets/user';
 
 const SERVER_PORT = 5000;
 const log: Logger = config.createLogger('server');
@@ -106,5 +108,10 @@ function startHttpServer(httpServer: http.Server): void {
 
 function socketIOConnections(io: Server): void {
   const postSocketHandler: SocketIOPostHandler = new SocketIOPostHandler(io);
+  const followerSocketHandler: SocketIOFollowerHandler = new SocketIOFollowerHandler(io);
+  const userSocketHandler: SocketIOUserHandler = new SocketIOUserHandler(io);
+
   postSocketHandler.listen();
+  followerSocketHandler.listen();
+  userSocketHandler.listen();
 }
