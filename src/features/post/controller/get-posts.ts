@@ -1,8 +1,8 @@
 import { Request, Response } from 'express';
 import HTTP_STATUS from 'http-status-codes';
 import { IPostDocument, IReactions } from '../interfaces/post.interface';
-import { PostCache } from 'src/shared/services/redis/post.cache';
-import { postService } from 'src/shared/services/db/post.service';
+import { PostCache } from '../../../shared/services/redis/post.cache';
+import { postService } from '../../../shared/services/db/post.service';
 
 const postCache: PostCache = new PostCache();
 const PAGE_SIZE = 10;

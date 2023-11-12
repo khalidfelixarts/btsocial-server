@@ -4,11 +4,12 @@ import { createBullBoard } from '@bull-board/api';
 import { BullAdapter } from '@bull-board/api/bullAdapter';
 import { ExpressAdapter } from '@bull-board/express';
 import { config } from '../../../config';
-import { IAuthJob } from 'src/features/auth/interfaces/auth.interface';
-import { IEmailJob } from 'src/features/user/interfaces/user.interface';
-import { IPostJobData } from 'src/features/post/interfaces/post.interface';
+import { IAuthJob } from '../../../features/auth/interfaces/auth.interface';
+import { IEmailJob } from '../../../features/user/interfaces/user.interface';
+import { IPostJobData } from '../../../features/post/interfaces/post.interface';
+import { IReactionJob } from 'src/features/reactions/interfaces/reaction.interface';
 
-type IBaseJobData = IAuthJob | IEmailJob | IPostJobData;
+type IBaseJobData = IAuthJob | IEmailJob | IPostJobData | IReactionJob;
 
 let bullAdapters: BullAdapter[] = [];
 

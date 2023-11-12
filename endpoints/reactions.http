@@ -1,0 +1,54 @@
+@baseUrl = http://localhost:5000
+
+@urlPath = api/v1
+
+
+
+###
+POST {{baseUrl}}/{{urlPath}}/post/reaction
+Content-Type: application/json
+Accept: application/json
+withCredentials: true
+
+{
+  "userTo": "654f8624782e00a1ce0c7b77",
+  "postId": "6550a9d3b1769abfaccb20b7",
+  "type": "sad",
+  "previousReaction": "",
+  "postReactions": {"like": 0,"love": 0,"happy": 0,"sad": 1,"wow": 0,"angry": 0},
+  "profilePicture": "https://res.cloudinary.com/de0llaul4/image/upload/v1699710504/654f8624782e00a1ce0c7b77"
+}
+
+
+
+###
+DELETE  {{baseUrl}}/{{urlPath}}/post/reaction/6550a9d3b1769abfaccb20b7/sad/{"like": 0,"love": 0,"happy": 0,"sad": 0,"wow": 0,"angry": 0}
+Content-Type: application/json
+Accept: application/json
+withCredentials: true
+
+{}
+
+
+
+###
+GET  {{baseUrl}}/{{urlPath}}/post/reactions/6550a9d3b1769abfaccb20b7
+Content-Type: application/json
+Accept: application/json
+withCredentials: true
+
+
+
+###
+GET  {{baseUrl}}/{{urlPath}}/post/single/reaction/username/Khalid/6550a9d3b1769abfaccb20b7/
+Content-Type: application/json
+Accept: application/json
+withCredentials: true
+
+
+###
+GET  {{baseUrl}}/{{urlPath}}/post/reactions/username/Khalid
+Content-Type: application/json
+Accept: application/json
+withCredentials: true
+

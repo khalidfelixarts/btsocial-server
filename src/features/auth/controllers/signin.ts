@@ -7,8 +7,8 @@ import { authService } from '../../../shared/services/db/auth.service';
 import { BadRequestError } from '../../../shared/globals/helpers/error-handler';
 import { loginSchema } from '../schemes/signin';
 import { IAuthDocument } from '../interfaces/auth.interface';
-import { userService } from 'src/shared/services/db/user.service';
-import { IUserDocument } from 'src/features/user/interfaces/user.interface';
+import { userService } from '../../../shared/services/db/user.service';
+import { IUserDocument } from '../../user/interfaces/user.interface';
 
 //////////// EMAIL SENT TEST //////////////
 // import { IResetPasswordParams } from 'src/features/user/interfaces/user.interface';

@@ -1,6 +1,6 @@
 import { DoneCallback, Job } from 'bull';
 import Logger from 'bunyan';
-import { config } from 'src/config';
+import { config } from '../../config';
 import { authService } from '../services/db/auth.service';
 
 const log: Logger = config.createLogger('authWorker');

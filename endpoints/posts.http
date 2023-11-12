@@ -46,7 +46,7 @@ withCredentials: true
 
 
 ###
-GET {{baseUrl}}/{{urlPath}}/post/images/1
+GET {{baseUrl}}/{{urlPath}}/post/images/2
 Content-Type: application/json
 Accept: application/json
 withCredentials: true

@@ -1,15 +1,15 @@
 import { Request, Response } from 'express';
 import { ObjectId } from 'mongodb';
 import HTTP_STATUS from 'http-status-codes';
-import { joiValidation } from 'src/shared/globals/decorators/joi-validation.decorator';
+import { joiValidation } from '../../../shared/globals/decorators/joi-validation.decorator';
 import { postSchema, postWithImageSchema } from '../schemes/post.schemes';
 import { IPostDocument } from '../interfaces/post.interface';
-import { PostCache } from 'src/shared/services/redis/post.cache';
-import { socketIOPostObject } from 'src/shared/sockets/post';
-import { postQueue } from 'src/shared/services/queues/post.queue';
+import { PostCache } from '../../../shared/services/redis/post.cache';
+import { socketIOPostObject } from '../../../shared/sockets/post';
+import { postQueue } from '../../../shared/services/queues/post.queue';
 import { UploadApiResponse } from 'cloudinary';
-import { upload } from 'src/shared/globals/helpers/cloudinary-upload';
-import { BadRequestError } from 'src/shared/globals/helpers/error-handler';
+import { upload } from '../../../shared/globals/helpers/cloudinary-upload';
+import { BadRequestError } from '../../../shared/globals/helpers/error-handler';
 
 const postCache: PostCache = new PostCache();
 

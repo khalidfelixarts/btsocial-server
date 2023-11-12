@@ -13,8 +13,8 @@ import { IUserDocument } from '../../../features/user/interfaces/user.interface'
 import { UserCache } from '../../../shared/services/redis/user.cache';
 import { omit } from 'lodash';
 import JWT from 'jsonwebtoken';
-import { authQueue } from 'src/shared/services/queues/auth.queue';
-import { userQueue } from 'src/shared/services/queues/user.queue';
+import { authQueue } from '../../../shared/services/queues/auth.queue';
+import { userQueue } from '../../../shared/services/queues/user.queue';
 import { config } from '../../../config';
 
 const userCache: UserCache = new UserCache();

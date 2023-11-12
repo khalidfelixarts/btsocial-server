@@ -1,7 +1,8 @@
 import { Request, Response } from 'express';
-import { IUserDocument } from 'src/features/user/interfaces/user.interface';
-import { userService } from 'src/shared/services/db/user.service';
-import { UserCache } from 'src/shared/services/redis/user.cache';
+import { IUserDocument } from '../../user/interfaces/user.interface';
+import { userService } from '../../../shared/services/db/user.service';
+import { UserCache } from '../../../shared/services/redis/user.cache';
+
 import HTTP_STATUS from 'http-status-codes';
 
 const userCache: UserCache = new UserCache();
