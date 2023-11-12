@@ -23,8 +23,8 @@ export interface IPostDocument extends Document {
   commentsCount: number;
   imgVersion?: string;
   imgId?: string;
-  videoId?: string;
-  videoVersion?: string;
+  // videoId?: string;
+  // videoVersion?: string;
   feelings?: string;
   gifUrl?: string;
   privacy?: string;

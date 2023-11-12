@@ -4,7 +4,7 @@ export class Helpers {
     return valueString
       .split(' ')
       .map((value: string) => `${value.charAt(0).toUpperCase()}${value.slice(1).toLowerCase()}`)
-      .join();
+      .join(' ');
   }
 
   static lowerCase(str: string): string {
@@ -26,8 +26,8 @@ export class Helpers {
     try {
       JSON.parse(prop);
     } catch (error) {
-      console.log('Error in Helpers');
       return prop;
     }
+    return JSON.parse(prop);
   }
 }
