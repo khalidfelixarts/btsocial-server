@@ -17,6 +17,7 @@ import applicationRoutes from './routes';
 import { SocketIOPostHandler } from './shared/sockets/post';
 import { SocketIOFollowerHandler } from './shared/sockets/follower';
 import { SocketIOUserHandler } from './shared/sockets/user';
+import { SocketIONotificationHandler } from './shared/sockets/notification';
 
 const SERVER_PORT = 5000;
 const log: Logger = config.createLogger('server');
@@ -110,8 +111,10 @@ function socketIOConnections(io: Server): void {
   const postSocketHandler: SocketIOPostHandler = new SocketIOPostHandler(io);
   const followerSocketHandler: SocketIOFollowerHandler = new SocketIOFollowerHandler(io);
   const userSocketHandler: SocketIOUserHandler = new SocketIOUserHandler(io);
+  const notificationSocketHandler: SocketIONotificationHandler = new SocketIONotificationHandler();
 
   postSocketHandler.listen();
   followerSocketHandler.listen();
   userSocketHandler.listen();
+  notificationSocketHandler.listen(io);
 }
