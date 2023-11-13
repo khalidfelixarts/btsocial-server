@@ -18,6 +18,7 @@ import { SocketIOPostHandler } from './shared/sockets/post';
 import { SocketIOFollowerHandler } from './shared/sockets/follower';
 import { SocketIOUserHandler } from './shared/sockets/user';
 import { SocketIONotificationHandler } from './shared/sockets/notification';
+import { SocketIOImageHandler } from './shared/sockets/image';
 
 const SERVER_PORT = 5000;
 const log: Logger = config.createLogger('server');
@@ -35,7 +36,7 @@ function securityMiddleware(app: Application): void {
     cookieSession({
       name: 'session',
       keys: [config.SECRET_KEY_ONE!, config.SECRET_KEY_TWO!],
-      maxAge: 24 * 7 * 3600,
+      maxAge: 24 * 60 * 60 * 1000 * 7,
       secure: config.NODE_ENV !== 'development'
     })
   );
@@ -112,9 +113,11 @@ function socketIOConnections(io: Server): void {
   const followerSocketHandler: SocketIOFollowerHandler = new SocketIOFollowerHandler(io);
   const userSocketHandler: SocketIOUserHandler = new SocketIOUserHandler(io);
   const notificationSocketHandler: SocketIONotificationHandler = new SocketIONotificationHandler();
+  const imageSocketHandler: SocketIOImageHandler = new SocketIOImageHandler();
 
   postSocketHandler.listen();
   followerSocketHandler.listen();
   userSocketHandler.listen();
   notificationSocketHandler.listen(io);
+  imageSocketHandler.listen(io);
 }
