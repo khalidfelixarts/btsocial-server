@@ -19,6 +19,7 @@ import { SocketIOFollowerHandler } from './shared/sockets/follower';
 import { SocketIOUserHandler } from './shared/sockets/user';
 import { SocketIONotificationHandler } from './shared/sockets/notification';
 import { SocketIOImageHandler } from './shared/sockets/image';
+import { SocketIOChatHandler } from './shared/sockets/chat';
 
 const SERVER_PORT = 5000;
 const log: Logger = config.createLogger('server');
@@ -114,10 +115,12 @@ function socketIOConnections(io: Server): void {
   const userSocketHandler: SocketIOUserHandler = new SocketIOUserHandler(io);
   const notificationSocketHandler: SocketIONotificationHandler = new SocketIONotificationHandler();
   const imageSocketHandler: SocketIOImageHandler = new SocketIOImageHandler();
+  const chatSocketHandler: SocketIOChatHandler = new SocketIOChatHandler(io);
 
   postSocketHandler.listen();
   followerSocketHandler.listen();
   userSocketHandler.listen();
+  chatSocketHandler.listen();
   notificationSocketHandler.listen(io);
   imageSocketHandler.listen(io);
 }
