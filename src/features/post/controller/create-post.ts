@@ -10,6 +10,7 @@ import { postQueue } from '../../../shared/services/queues/post.queue';
 import { UploadApiResponse } from 'cloudinary';
 import { upload } from '../../../shared/globals/helpers/cloudinary-upload';
 import { BadRequestError } from '../../../shared/globals/helpers/error-handler';
+import { imageQueue } from '../../../shared/services/queues/image.queue';
 
 const postCache: PostCache = new PostCache();
 
@@ -99,6 +100,11 @@ export class Create {
     postQueue.addPostJob('addPostToDB', { key: req.currentUser!.userId, value: createdPost });
 
     ////////////// NEED TO CALL IMAGE QUEUE TO ADD IMAGE TO MONGODB /////////////////////////
+    imageQueue.addImageJob('addImageToDB', {
+      key: `${req.currentUser!.userId}`,
+      imgId: result.public_id,
+      imgVersion: result.version.toString()
+    });
 
     res.status(HTTP_STATUS.CREATED).json({ message: 'IMG Post created successfully' });
   }
