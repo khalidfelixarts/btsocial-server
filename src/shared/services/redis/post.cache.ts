@@ -239,7 +239,10 @@ export class PostCache extends BaseCache {
         await this.client.connect();
       }
 
-      const reply: string[] = await this.client.ZRANGE(key, uId, uId, { REV: true, BY: 'SCORE' });
+      //////// THIS SYNTAX HAVE ERROR //////////
+      // const reply: string[] = await this.client.ZRANGE(key, uId, uId, { REV: true, BY: 'SCORE' });
+      const r: string[] = await this.client.ZRANGEBYSCORE(key, uId, uId);
+      const reply = [...r].reverse();
       const multi: ReturnType<typeof this.client.multi> = this.client.multi();
       for (const value of reply) {
         multi.HGETALL(`posts:${value}`);
