@@ -5,13 +5,14 @@ import { BullAdapter } from '@bull-board/api/bullAdapter';
 import { ExpressAdapter } from '@bull-board/express';
 import { config } from '../../../config';
 import { IAuthJob } from '../../../features/auth/interfaces/auth.interface';
-import { IEmailJob } from '../../../features/user/interfaces/user.interface';
+import { IEmailJob, IUserJob } from '../../../features/user/interfaces/user.interface';
 import { IPostJobData } from '../../../features/post/interfaces/post.interface';
 import { IReactionJob } from '../../../features/reactions/interfaces/reaction.interface';
 import { ICommentJob } from '../../../features/comments/interfaces/comment.interface';
-import { IFollowerJobData } from '../../../features/followers/interfaces/follower.interface';
+import { IBlockedUserJobData, IFollowerJobData } from '../../../features/followers/interfaces/follower.interface';
 import { INotificationJobData } from '../../../features/notifications/interfaces/notification.interface';
 import { IFileImageJobData } from '../../../features/images/interfaces/image.interface';
+import { IChatJobData, IMessageData } from '../../../features/chat/interfaces/chat.interface';
 
 type IBaseJobData =
   | IAuthJob
@@ -20,8 +21,12 @@ type IBaseJobData =
   | IReactionJob
   | ICommentJob
   | IFollowerJobData
+  | IBlockedUserJobData
   | INotificationJobData
-  | IFileImageJobData;
+  | IFileImageJobData
+  | IChatJobData
+  | IMessageData
+  | IUserJob;
 
 let bullAdapters: BullAdapter[] = [];
 
