@@ -7,13 +7,13 @@ import HTTP_STATUS from 'http-status-codes';
 import { authService } from '../../../shared/services/db/auth.service';
 import { BadRequestError } from '../../../shared/globals/helpers/error-handler';
 import { IAuthDocument } from '../interfaces/auth.interface';
-import { joiValidation } from 'src/shared/globals/decorators/joi-validation.decorator';
+import { joiValidation } from '../../../shared/globals/decorators/joi-validation.decorator';
 import { emailSchema, passwordSchema } from '../schemes/password';
 import crypto from 'crypto';
-import { forgotPasswordTemplate } from 'src/shared/services/emails/templates/forgot-password/forgot-password-template';
-import { emailQueue } from 'src/shared/services/queues/email.queue';
-import { IResetPasswordParams } from 'src/features/user/interfaces/user.interface';
-import { resetPasswordTemplate } from 'src/shared/services/emails/templates/reset-password/reset-password-template';
+import { forgotPasswordTemplate } from '../../../shared/services/emails/templates/forgot-password/forgot-password-template';
+import { emailQueue } from '../../../shared/services/queues/email.queue';
+import { IResetPasswordParams } from '../../user/interfaces/user.interface';
+import { resetPasswordTemplate } from '../../../shared/services/emails/templates/reset-password/reset-password-template';
 
 export class Password {
   @joiValidation(emailSchema)
