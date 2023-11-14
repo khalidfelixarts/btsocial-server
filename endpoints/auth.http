@@ -52,13 +52,13 @@ Accept: application/json
 withCredentials: true
 
 {
-  "email": "khandanis743@gmail.com"
+  "email": "khankhalid1743@gmail.com"
 }
 
 
 
 ###
-POST {{baseUrl}}/{{urlPath}}/reset-password/74e1a15f9fb561ffd8673518c866c6f666b57ff3
+POST {{baseUrl}}/{{urlPath}}/reset-password/3bdf21410bc0372ca0da0c0da3ef46c478e677bc
 Content-Type: application/json
 Accept: application/json
 withCredentials: true
