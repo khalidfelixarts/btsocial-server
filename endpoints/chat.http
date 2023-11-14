@@ -20,14 +20,14 @@ Accept: application/json
 withCredentials: true
 
 {
-  "conversationId": "65520bfb737c699e9a44d6ec",
-  "receiverId": "6550f0a5234925f365996e52",
+  "conversationId": "6552ec109648cd25091f465f",
+  "receiverId": "6552ea0fe697b029b526519d",
   "receiverUsername": "Tepu",
   "receiverAvatarColor": "red",
   "receiverProfilePicture": "https://res.cloudinary.com/de0llaul4/image/upload/v1699803288/6550f096234925f365996e4b",
-  "body": "Yo! 3rd message with isRead=true",
+  "body": "Yo! 2nd message",
   "gifUrl": "",
-  "isRead": true,
+  "isRead": false,
   "selectedImage": ""
 }
 
@@ -38,8 +38,8 @@ Accept: application/json
 withCredentials: true
 
 {
-  "userOne": "6550f07d234925f365996e43",
-  "userTwo": "6550f0b2234925f365996e59"
+  "userOne": "6552e9fee697b029b5265196",
+  "userTwo": "6552ea0fe697b029b526519d"
 }
 
 ###
@@ -60,8 +60,8 @@ Accept: application/json
 withCredentials: true
 
 {
-  "senderId": "6550f07d234925f365996e43",
-  "receiverId": "6550f0a5234925f365996e52"
+  "senderId": "6552e9fee697b029b5265196",
+  "receiverId": "6552ea0fe697b029b526519d"
 }
 
 ###
@@ -72,14 +72,14 @@ withCredentials: true
 
 # For this endpoint, the type is either add or remove
 {
-  "conversationId": "65520b57737c699e9a44d6e5",
-  "messageId": "65520b57737c699e9a44d6e4",
-  "reaction": "like",
+  "conversationId": "6552ec109648cd25091f465f",
+  "messageId": "6552ec109648cd25091f465e",
+  "reaction": "love",
   "type": "add"
 }
 
 ###
-DELETE {{baseUrl}}/{{urlPath}}/chat/message/mark-as-deleted/65520b57737c699e9a44d6e4/6550f07d234925f365996e43/6550f096234925f365996e4b/deleteForMe
+DELETE {{baseUrl}}/{{urlPath}}/chat/message/mark-as-deleted/6552ec109648cd25091f465e/6552e9fee697b029b5265196/6552ea0fe697b029b526519d/deleteForEveryone
 #/chat/message/mark-as-deleted/<messageId>/<senderId>/<receiverId>/<type>
 # For this endpoint, the type is either deleteForMe or deleteForEveryone
 Content-Type: application/json
