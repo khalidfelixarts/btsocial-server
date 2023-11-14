@@ -4,8 +4,10 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon ./build/src/app.js | bunyan -o short",
-    "dev": "nodemon -r tsconfig-paths/register src/app.ts | bunyan -o short",
+    "start": "cross-env NODE_ENV=production pm2 start ./build/src/app.js -i 5 --attach --watch | bunyan -o short",
+    "stop": "pm2 stop all",
+    "delete": "pm2 delete all",
+    "dev": "nodemon src/app.ts | bunyan -o short",
     "lint:check": "eslint src/**/*.ts",
     "lint:fix": "eslint src/**/*.ts --fix",
     "prettier:check": "prettier --check 'src/**/*.{ts,json}'",
