@@ -20,6 +20,7 @@ import { SocketIOUserHandler } from './shared/sockets/user';
 import { SocketIONotificationHandler } from './shared/sockets/notification';
 import { SocketIOImageHandler } from './shared/sockets/image';
 import { SocketIOChatHandler } from './shared/sockets/chat';
+import apiStats from 'swagger-stats';
 
 const SERVER_PORT = 5000;
 const log: Logger = config.createLogger('server');
@@ -28,6 +29,7 @@ export function startClient(app: Application): void {
   securityMiddleware(app);
   standardMiddleware(app);
   routeMiddleware(app);
+  apiMonitoring(app);
   globalErrorHandler(app);
   startServer(app);
 }
@@ -59,6 +61,14 @@ function standardMiddleware(app: Application): void {
   app.use(urlencoded({ extended: true, limit: '50mb' }));
 }
 
+function apiMonitoring(app: Application): void {
+  app.use(
+    apiStats.getMiddleware({
+      uriPath: '/swagger-monitoring'
+    })
+  );
+}
+
 function routeMiddleware(app: Application): void {
   applicationRoutes(app);
 }
@@ -78,6 +88,9 @@ function globalErrorHandler(app: Application): void {
 }
 
 async function startServer(app: Application): Promise<void> {
+  if (!config.JWT_TOKEN) {
+    throw new Error('JWT_TOKEN must be provided');
+  }
   try {
     const httpServer: http.Server = new http.Server(app);
     const socketIO: Server = await createSocketIO(httpServer);
@@ -103,6 +116,7 @@ async function createSocketIO(httpServer: http.Server): Promise<Server> {
 }
 
 function startHttpServer(httpServer: http.Server): void {
+  log.info(`Worker with process ${process.pid} has started`);
   log.info(`Server has started with process ${process.pid}`);
   httpServer.listen(SERVER_PORT, () => {
     log.info(`SERVER RUNNING ON PORT ${SERVER_PORT}`);
